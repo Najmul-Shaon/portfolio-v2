@@ -1,7 +1,7 @@
 import { assets } from "@/assets/assets";
 import Image from "next/image";
 
-const Header = () => {
+const Header = ({ isDarkMode }) => {
   return (
     <div className="w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col items-center justify-center gap-4">
       {/* user profile image  */}
@@ -28,7 +28,7 @@ const Header = () => {
       <div className="flex items-center flex-col sm:flex-row gap-4 mt-4">
         <a
           href="#contact"
-          className="px-10 py-3 border border-white rounded-full bg-black text-white flex items-center gap-2"
+          className="px-10 py-3 border border-white rounded-full bg-black text-white flex items-center gap-2 dark:bg-transparent"
         >
           Contact Me{" "}
           <Image
@@ -40,7 +40,7 @@ const Header = () => {
         <a
           href="/Resume-of-Najmul-Hasan.pdf"
           download
-          className="px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2"
+          className="px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2 dark:text-black dark:bg-white"
         >
           Resume{" "}
           <Image
