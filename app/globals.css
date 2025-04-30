@@ -3,3 +3,23 @@
 * {
   font-family: Outfit;
 }
+
+.lightHove {
+  color: "#fcf4ff";
+}
+
+.darkHove {
+  color: "#2a004a";
+}
+
+.darkTheme {
+  color: "#11001f";
+}
+
+.font-ovo {
+  font-family: "Ovo", serif;
+}
+
+.font-outfit {
+  font-family: "Outfit", sans-serif;
+}
