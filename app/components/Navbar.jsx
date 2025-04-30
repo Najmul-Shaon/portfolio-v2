@@ -1,18 +1,31 @@
 import { assets } from "@/assets/assets";
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Navbar = () => {
-  const sideMenuRef = useRef();
+  const [isScroll, setIsScroll] = useState(false);
+  const sideMenuRef = useRef(null);
   // func for open menu
-  const openMunu = () => {
+  const openMenu = () => {
     sideMenuRef.current.style.transform = "translateX(-16rem)";
   };
 
   // func for close menu
-  const closeMunu = () => {
+  const closeMenu = () => {
     sideMenuRef.current.style.transform = "translateX(16rem)";
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 5) {
+        setIsScroll(true);
+      } else {
+        setIsScroll(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <>
       {/* bg image that applied to all over the container  */}
@@ -24,7 +37,11 @@ const Navbar = () => {
         />
       </div>
       {/* whole nav  */}
-      <nav className="w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50">
+      <nav
+        className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 ${
+          isScroll ? "bg-white/50 backdrop-blur-lg shadow-sm" : ""
+        }`}
+      >
         {/* first container::: logo section  */}
         <a href="#top">
           <Image
@@ -35,7 +52,11 @@ const Navbar = () => {
         </a>
 
         {/* second container::: menu section::: for large device  */}
-        <ul className="hidden lg:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 bg-white shadow-sm bg-opacity-50">
+        <ul
+          className={`hidden lg:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 ${
+            isScroll ? "" : "shadow-sm bg-white/50"
+          }`}
+        >
           <li>
             <a className="font-ovo" href="#top">
               Home
@@ -79,7 +100,7 @@ const Navbar = () => {
             Contact{" "}
             <Image src={assets.arrow_icon} className="w-3" alt="contact icon" />
           </a>
-          <button className="block lg:hidden ml-3" onClick={openMunu}>
+          <button className="block lg:hidden ml-3" onClick={openMenu}>
             <Image
               src={assets.menu_black}
               alt="menu icon"
@@ -93,7 +114,7 @@ const Navbar = () => {
           ref={sideMenuRef}
           className="flex lg:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500"
         >
-          <div className="absolute right-6 top-6" onClick={closeMunu}>
+          <div className="absolute right-6 top-6" onClick={closeMenu}>
             <Image
               src={assets.close_black}
               alt="close icon"
@@ -101,27 +122,27 @@ const Navbar = () => {
             ></Image>
           </div>{" "}
           <li>
-            <a className="font-ovo" onClick={closeMunu} href="#top">
+            <a className="font-ovo" onClick={closeMenu} href="#top">
               Home
             </a>
           </li>
           <li>
-            <a className="font-ovo" onClick={closeMunu} href="#about">
+            <a className="font-ovo" onClick={closeMenu} href="#about">
               About Me
             </a>
           </li>
           <li>
-            <a className="font-ovo" onClick={closeMunu} href="#services">
+            <a className="font-ovo" onClick={closeMenu} href="#services">
               Services
             </a>
           </li>
           <li>
-            <a className="font-ovo" onClick={closeMunu} href="#work">
+            <a className="font-ovo" onClick={closeMenu} href="#work">
               My Work
             </a>
           </li>
           <li>
-            <a className="font-ovo" onClick={closeMunu} href="#contact">
+            <a className="font-ovo" onClick={closeMenu} href="#contact">
               Contact Me
             </a>
           </li>
