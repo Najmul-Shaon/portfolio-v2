@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${outfitFOnt.className} ${ovoFOnt.className} antialiased leading-8 overflow-x-hidden`}
       >
-        {children}
+        <div id="top">{children}</div>
       </body>
     </html>
   );
