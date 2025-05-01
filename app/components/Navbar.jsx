@@ -1,6 +1,7 @@
 import { assets } from "@/assets/assets";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
 
 const Navbar = ({ setIsDarkMode, isDarkMode }) => {
   const [isScroll, setIsScroll] = useState(false);
@@ -45,12 +46,16 @@ const Navbar = ({ setIsDarkMode, isDarkMode }) => {
         }`}
       >
         {/* first container::: logo section  */}
-        <a href="#top">
-          <Image
-            src={isDarkMode ? assets.logo_dark : assets.logo}
-            alt="logo"
-            className="w-28 cursor-pointer mr-14"
-          />
+        <a
+          href="#top"
+          // {/* <Image
+          //   src={isDarkMode ? assets.logo_dark : assets.logo}
+          //   alt="logo"
+          //   className="w-28 cursor-pointer mr-14"
+          // /> */}
+          className="text-3xl font-bold tracking-wide cursor-pointer"
+        >
+          {"<>Najmul</>"}
         </a>
 
         {/* second container::: menu section::: for large device  */}
@@ -98,7 +103,9 @@ const Navbar = ({ setIsDarkMode, isDarkMode }) => {
               className="w-6 cursor-pointer"
             />
           </button>
-          <a
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
             className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4 font-ovo dark:border-white/50"
             href="#contact"
           >
@@ -108,7 +115,7 @@ const Navbar = ({ setIsDarkMode, isDarkMode }) => {
               className="w-3"
               alt="contact icon"
             />
-          </a>
+          </motion.a>
           <button className="block lg:hidden ml-3" onClick={openMenu}>
             <Image
               src={isDarkMode ? assets.menu_white : assets.menu_black}

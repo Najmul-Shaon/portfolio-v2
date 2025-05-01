@@ -1,10 +1,11 @@
 import { assets } from "@/assets/assets";
 import Image from "next/image";
 import { motion } from "motion/react";
+import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
 const Header = ({ isDarkMode }) => {
   return (
-    <div className="w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col items-center justify-center gap-4">
+    <div className="w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col items-center justify-center gap-4 pt-24">
       {/* user profile image  */}
       <motion.div
         initial={{ scale: 0 }}
@@ -12,9 +13,9 @@ const Header = ({ isDarkMode }) => {
         transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
       >
         <Image
-          src={assets.profile_img}
+          src={assets.profile_img_2}
           alt="profile image"
-          className="rounded-full w-32"
+          className="rounded-full w-32 h-32"
         />
       </motion.div>{" "}
       {/* header contents  */}
@@ -44,6 +45,38 @@ const Header = ({ isDarkMode }) => {
         I am a frontend developer from California, USA with 10 years of
         experience in multiple companies like Microsoft, Tesla and Apple.
       </motion.p>
+      {/* social icons  */}
+      <motion.div
+        initial={{ y: -30, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.7 }}
+        className="flex items-center gap-6"
+      >
+        <a
+          href="https://github.com/Najmul-Shaon"
+          className="text-3xl"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <FaGithub />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/najmul-shaon"
+          className="text-3xl text-blue-500"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <FaLinkedin />
+        </a>
+        <a
+          href="https://wa.me/+8801721933810"
+          className="text-3xl text-green-500"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <FaWhatsapp />
+        </a>
+      </motion.div>
       {/* action btns area  */}
       <div className="flex items-center flex-col sm:flex-row gap-4 mt-4">
         <motion.a
