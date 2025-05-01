@@ -42,7 +42,7 @@ const Services = () => {
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.9 }}
+        transition={{ duration: 0.5, delay: 0.9 }}
         className="grid grid-cols-[var(--grid-auto)] gap-6 my-10"
       >
         {serviceData.map((item, idx) => (
